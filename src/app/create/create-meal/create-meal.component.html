@@ -1,0 +1,85 @@
+<div class="alert alert-success" *ngIf="isSuccess">
+</div>
+<div [formGroup]="mealForm">
+  <br>
+  <h2>Utwórz dietę</h2>
+
+  <div class="form-group">
+    <label for="name">Nazwa posiłku: </label>
+    <input id="name" class="form-control" type="text" formControlName="name" >
+  </div>
+
+  <div class="form-group" formArrayName="ingredients">
+    <label for="ingredients">Składniki: </label>
+    <table id="ingredients" class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Ilość</th>
+        <th scope="col">Jednostka</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ingredient of mealForm.controls.ingredients.controls; let i = index">
+        <div [formGroupName]="i">
+          <td>
+            <input type="text" class="form-control" formControlName="name">
+          </td>
+          <td>
+            <input type="number" class="form-control" formControlName="amount">
+          </td>
+          <td>
+            <select class="form-control" >
+              <option *ngFor="let unit of units" formControlName="unit">{{unit}}</option>
+            </select>
+          </td>
+        </div>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button class="btn btn-secondary  float-right button" (click)="addIngredient()">Dodaj składnik</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div formGroupName="nutritional_values" class="form-group">
+    <div class="form-group">
+      <label for="calories">Kalorie: </label>
+      <input id="calories" class="form-control" type="number" formControlName="calories" min="0">
+    </div>
+    <div class="form-group">
+      <label for="carbohydrates">Węglowodany: </label>
+      <input id="carbohydrates" class="form-control" type="number" formControlName="carbohydrates" min="0">
+    </div>
+    <div class="form-group">
+      <label for="proteins">Białko: </label>
+      <input id="proteins" class="form-control" type="number" formControlName="proteins" min="0">
+    </div>
+    <div class="form-group">
+      <label for="fats">Tłuszcze: </label>
+      <input id="fats" class="form-control" type="number" formControlName="fats" min="0">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="recipe">Przepis: </label>
+    <textarea id="recipe" type="text" class="form-control" formControlName="recipe" rows="6">
+      </textarea>
+  </div>
+
+<!--  <div class="form-group">-->
+<!--    <label for="meal_type">Przepis: </label>-->
+<!--    <textarea id="meal_type" type="text" class="form-control" formControlName="meal_type" rows="6">-->
+<!--      </textarea>-->
+<!--  </div>-->
+
+
+  <div class="row-cols-2">
+    <button class="btn btn-secondary btn-lg float-left button" routerLink="..">Anuluj</button>
+    <button class="btn btn-primary btn-lg float-right button" (click)="createMeal()">Utwórz</button>
+  </div>
+</div>
+
+

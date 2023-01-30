@@ -1,0 +1,120 @@
+<div *ngIf="!haveDiets" [formGroup]="dietForm" (ngSubmit)="getDiets()">
+  <div class="form-group row">
+    <div class="col">
+    <label for="protein_min">Protein Min</label>
+    <input type="number" class="form-control" id="protein_min" formControlName="protein_min">
+    </div>
+    <div class="col">
+    <label for="protein_max">Protein Max</label>
+    <input type="number" class="form-control" id="protein_max" formControlName="protein_max">
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+    <label for="carb_min">Carbs Min</label>
+    <input type="number" class="form-control" id="carb_min" formControlName="carb_min">
+    </div>
+
+    <div class="col">
+    <label for="carb_max">Carbs Max</label>
+    <input type="number" class="form-control" id="carb_max" formControlName="carb_max">
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="col">
+    <label for="fat_min">Fat Min</label>
+    <input type="number" class="form-control" id="fat_min" formControlName="fat_min">
+    </div>
+
+    <div class="col">
+    <label for="fat_max">Fat Max</label>
+    <input type="number" class="form-control" id="fat_max" formControlName="fat_max">
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="col">
+    <label for="calories_min">Calories Min</label>
+    <input type="number" class="form-control" id="calories_min" formControlName="calories_min">
+    </div>
+
+    <div class="col">
+    <label for="calories_max">Calories Max</label>
+    <input type="number" class="form-control" id="calories_max" formControlName="calories_max">
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="col">
+    <label for="diet_length_min">Diet Length Min</label>
+    <input type="number" class="form-control" id="diet_length_min" formControlName="diet_length_min">
+    </div>
+
+    <div class="col">
+    <label for="diet_length_max">Diet Length Max</label>
+    <input type="number" class="form-control" id="diet_length_max" formControlName="diet_length_max">
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="col">
+    <label for="number_of_reviews_min">Number of Reviews Min</label>
+    <input type="number" class="form-control" id="number_of_reviews_min" formControlName="number_of_reviews_min">
+    </div>
+
+    <div class="col">
+    <label for="number_of_reviews_max">Number of Reviews Max</label>
+    <input type="number" class="form-control" id="number_of_reviews_max" formControlName="number_of_reviews_max">
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="col">
+    <label for="rating_min">Rating Min</label>
+    <input type="number" class="form-control" id="rating_min" formControlName="rating_min">
+    </div>
+
+    <div class="col">
+    <label for="rating_max">Rating Max</label>
+    <input type="number" class="form-control" id="rating_max" formControlName="rating_max">
+    </div>
+    <div class="form-group row">
+      <button type="submit" class="btn btn-primary btn-block" (click)="getDiets()">Szukaj</button>
+    </div>
+  </div>
+
+
+
+</div>
+<div *ngIf="haveDiets">
+  <a href="#" class="list-group-item list-group-item-action" *ngFor="let diet of diets">
+    <div class="row">
+      <div class="col">
+        <img class="diet-image" src="https://picsum.photos/200/300" alt="">
+      </div>
+      <div class="col">
+        <h3>{{diet.title}}</h3>
+        <h3>{{diet.creator}}</h3>
+      </div>
+      <div class="col">
+        <h2>{{diet.avg_calories}} Kcal</h2>
+      </div>
+      <table class=" col">
+        <tr>
+          <td>Białko</td>
+          <td>Tłuszcz</td>
+          <td>Węglowodany</td>
+        </tr>
+        <tr>
+          <td>{{diet.avg_protein}}g</td>
+          <td>{{diet.avg_fat}}g</td>
+          <td>{{diet.avg_carbohydrates}}g</td>
+        </tr>
+      </table>
+      <div class="col">
+        <p style="color: green">{{diet.avg_rating}}<sub>({{diet.ratings_count}})</sub></p>
+      </div>
+    </div>
+  </a>
+</div>

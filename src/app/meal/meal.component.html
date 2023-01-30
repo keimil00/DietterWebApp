@@ -1,0 +1,60 @@
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="row">
+      <div class="col">
+        <img class="meal-image" src="https://picsum.photos/200/300" alt="">
+      </div>
+      <div class="col">
+        <h3>Super owsianka</h3>
+        <h3>Jan Nowak</h3>
+      </div>
+      <div class="col">
+        <h2>600 Kcal </h2>
+      </div>
+      <table class="col">
+        <tr>
+          <td>Białko</td>
+          <td>Tłuszcz</td>
+          <td>Węglowodany</td>
+        </tr>
+        <tr>
+          <td>20g</td>
+          <td>20g</td>
+          <td>20g</td>
+        </tr>
+      </table>
+      <div class="col">
+        <p style="color: green">8,94<sub>(50)</sub></p>
+      </div>
+    </div>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action" *ngFor="let meal of meals">
+    <div class="row">
+      <div class="col">
+        <img class="meal-image" src="https://picsum.photos/200/300" alt="">
+      </div>
+      <div class="col">
+        <h3>{{meal.name}}</h3>
+        <h3>{{meal.author}}</h3>
+      </div>
+      <div class="col">
+        <h2>{{meal.nutritional_values.calories}} Kcal</h2>
+      </div>
+      <table class="col">
+        <tr>
+          <td>Białko</td>
+          <td>Tłuszcz</td>
+          <td>Węglowodany</td>
+        </tr>
+        <tr>
+          <td>{{meal.nutritional_values.protein}}g</td>
+          <td>{{meal.nutritional_values.fat}}g</td>
+          <td>{{meal.nutritional_values.carbohydrates}}g</td>
+        </tr>
+      </table>
+      <div class="col">
+        <p style="color: green">{{meal.avg_rating}}<sub>({{meal.ratings_count}})</sub></p>
+      </div>
+    </div>
+  </a>
+</div>
